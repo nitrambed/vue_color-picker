@@ -36,20 +36,21 @@
                         <button class="btn btn-secondary" @click="reset">Annuler</button>
                     </div>
                     <hr />
-                    <h3> Nombre de carrés : {{ nbrOfSquares }}</h3>
+                    <h3> Nombre de carrés : {{ nbrOfSquares }} </h3>
                     <hr />
                     <div class="col-12" v-if="nbrOfSquares">
-                        <div class="prevsquare" v-for="square in squares" @click="selectedSquare=square"
-                            :style="{ backgroundColor: square }"></div>
+                        <div class="prevsquare" v-for="square in squares" @click="selectedSquare = square"
+                            :style="{backgroundColor: square}"></div>
                     </div>
                     <h3 v-else> Ajouter des couleurs !</h3>
                 </div>
             </div>
-            <div class=" col-6">
-                <div class="square mx-auto" :style="{ backgroundColor: selectedSquare}"></div>
+            <div class="col-6">
+                <div class="square mx-auto" :style="{backgroundColor: selectedSquare}"></div>
             </div>
         </div>
     </div>
+
 
     <script type="text/javascript">
         new Vue({
@@ -63,23 +64,20 @@
             },
             methods: {
                 resetColor() {
-                    this.green = 0;
-                    this.blue = 0;
-                    this.red = 0;
+                    this.red = this.green = this.blue = 0;
                 },
                 saveSquare() {
-                    this.squares.push(`rgb(${this.red}, ${this.green},${this.blue})`);
-                    console.log(this.squares);
+                    this.squares.push(`rgb(${this.red}, ${this.green}, ${this.blue})`);
                     this.resetColor();
                 },
                 reset() {
-                    this.squares = [];
                     this.resetColor();
-                },
+                    this.squares = [];
+                }
             },
             computed: {
                 nbrOfSquares() {
-                    return this.squares.length
+                    return this.squares.length;
                 }
             }
         })
